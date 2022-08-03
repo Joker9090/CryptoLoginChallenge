@@ -1,21 +1,39 @@
+import React from 'react';
 import { Text, useSx, View, H1, P, Row, A } from 'dripsy'
 import { TextLink } from 'solito/link'
 import { MotiLink } from 'solito/moti'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { MotiView, useAnimationState } from 'moti';
-import React from 'react';
 import { connect } from 'react-redux';
+import { getTest, MainReduxActions } from '../../provider/redux/actions';
+import { MainReducerState } from 'app/provider/redux/main';
 
 const mapStateToProps = (state) => {
-  // const { all_subjects } = state
-  return ({ reduxState: state })
+  const { main } = state
+  return {
+    current: main.current
+  }
 };
 
+const mapDispatchToProps = {
+  getTest
+}
 
-export const HomeScreen = (state) =>  {
-  console.log("state", state)
-  const [isActive, setIsActive] = React.useState(false);
+
+const HomeScreen = ({ current, getTest }: MainReducerState & MainReduxActions) => {
   const sx = useSx();
+  const [value, setValue] = React.useState<String>("");
+  const [isActive, setIsActive] = React.useState(false);
+  console.log("state", current);
+
+  React.useEffect(() => {
+    setValue(current);
+  }, [current]);
+
+  React.useEffect(() => {
+    getTest();
+  }, []);
+
 
   const scaleIn = useAnimationState({
     from: {
@@ -33,7 +51,7 @@ export const HomeScreen = (state) =>  {
   React.useEffect(() => {
     scaleIn.transitionTo(isActive ? 'open' : 'from');
   }, [isActive]);
-  
+
   return (
     <View
       sx={{ flex: 1, justifyContent: 'center', alignItems: 'center', p: 16 }}
@@ -108,5 +126,4 @@ export const HomeScreen = (state) =>  {
   )
 }
 
-
-// export default connect(mapStateToProps)(HomeScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);

@@ -40,13 +40,14 @@ You can add other folders inside of `packages/` if you know what you're doing an
   - Runs `expo start`
 
 
-
 ## Configure Env File
 Create a local .env file with the following variables
 ```
 NEXT_PUBLIC_API_KEY=
 NEXT_PUBLIC_API_URL=
 ```
+The env files need to be one for each app ( NEXT and EXPO ).
+Put the  .enf files inside apps/next and apps/expo folders
 
 ## TO IMPROVE
 

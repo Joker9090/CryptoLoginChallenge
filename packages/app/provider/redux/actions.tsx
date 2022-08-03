@@ -2,22 +2,18 @@ import * as t from './types';
 import axios from 'axios';
 
 export type MainReduxActions = {
-  getProducts: Function,
-  cleanProduct: Function,
-  getProduct: Function,
-  saveLocalProduct: Function,
-  filterProducts: Function,
-  removeLocalProduct: Function,
-  createProduct: Function,
+  getTest: Function,
 }
 
 export const getTest = () => (dispatch: any) => {
   const config = {
     headers:{
-      'X-CoinAPI-Key': '06F0362C-7B8C-4A3E-A75E-AF32AF521A81',
+      'X-CoinAPI-Key': process.env.NEXT_PUBLIC_API_URL,
     }
   };
+  dispatch({ type: t.GET_TEST, payload: `${process.env.NEXT_PUBLIC_API_URL}` });
 
+  /*
   axios.get(`https://rest.coinapi.io/v1/exchanges`, config)
   .then(res => {
     dispatch({ type: t.GET_TEST, payload: JSON.stringify(res) });
@@ -25,6 +21,7 @@ export const getTest = () => (dispatch: any) => {
   .catch(err => {
     dispatch({ type: t.GET_TEST, payload: "Error" });
   })
+  */
   /*
   axios.defaults.headers.common['X-CoinAPI-Key'] = `73034021-THIS-IS-SAMPLE-KEY`;
 

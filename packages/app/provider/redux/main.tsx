@@ -1,5 +1,10 @@
 import * as t from './types';
 
+export type MainReducerState = {
+  current: String
+  all_subjects: any
+}
+
 const INITIAL_STATE = {
   current: "",
   all_subjects: {}
