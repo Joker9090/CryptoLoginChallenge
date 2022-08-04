@@ -6,7 +6,7 @@ import { MotiLink } from 'solito/moti'
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { MotiView, useAnimationState } from 'moti';
 import { LoginFormStyle } from 'app/styles/LoginFormStyles';
-import { validateEmail, validatePassword } from 'app/helpers/herlpers';
+import { validateEmail, validatePassword } from 'app/helpers/helpers';
 
 export type LoginFormProps = {
   onSubmit: Function,
@@ -52,6 +52,7 @@ export const LoginForm = ({ onSubmit, serverMsg }: LoginFormProps) => {
 
   const isValid = !(Object.entries(validation).map(i => i[1]).filter(i => (i === true)).length);
   const clickBtn = () => {
+    console.log("y aca?")
     setIsActive(true);
     onSubmit(form);
   }
@@ -79,7 +80,7 @@ export const LoginForm = ({ onSubmit, serverMsg }: LoginFormProps) => {
         )}
         <View sx={buttonHolder} >
           <MotiView state={scaleIn} transition={{ type: 'timing', }} >
-            <View sx={(isValid) ? button : buttonDisabled} onTouchStart={() => isValid ? clickBtn() : () => { }} onTouchEnd={() => setIsActive(false)} >
+            <View sx={(isValid) ? button : buttonDisabled} onTouchStart={() => isValid ? clickBtn() : () => { }}  onClick={() => isValid ? clickBtn() : () => { }} onTouchEnd={() => setIsActive(false)} >
               <P sx={buttonText}>Login</P>
             </View>
           </MotiView>

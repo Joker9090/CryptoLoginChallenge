@@ -49,13 +49,15 @@ NEXT_PUBLIC_API_URL=
 The env files need to be one for each app ( NEXT and EXPO ).
 Put the  .enf files inside apps/next and apps/expo folders
 
+## User for test
+There is a few users generated, you can see the mocked data in package/app/sercices/services.tsx ApiLogin
+Please for this DEMO use `email@email.com | cosmefulanito`
+
 ## TO IMPROVE
-- lOGIN, validations
 - list of crypto,
 - detail crypto list
 - chart 
-- ui blem 
-
+- ui blem
 
 ## Questions 
 - [Q] How to perform cross-platform data fetching? (Taking into account server-side (web app/nextjs) and client-side (mobile app) rendering)
@@ -69,6 +71,9 @@ React(next) > LocalStorage > Service > ReduxActionCall
 
 - [Q]How would you implement a cross-platform http client? (That is, it worked both server-side and client-side)
 - [A]Doing a good Service!! we can separate funcionalities to gain some versatility
+
+Solito has the *.web.tsx file extension feature to separate the code to build for differente app/next or mobile app cases
+
 
 ## Coments 
 - I spent some time reading documentation and viewing some videos about solito and extra deps. using this monorepo more like react-native needs is kindy tricky. I have more experience working with scss or css vainilla, and now the components has an styledObject like scheme.

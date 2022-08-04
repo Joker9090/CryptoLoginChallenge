@@ -13,13 +13,22 @@ const INITIAL_STATE = {
 const mainReducer = (state = INITIAL_STATE, action) => {
   console.log("action", action)
   switch (action.type) {
-    /*
-    case t.GET_TEST:
+    case t.FETCH_LOGIN:
       return {
         ...state,
-        current: action.payload
+        loginStatus: ServerStatus.FETCH,
       }
-      */
+    case t.FETCHING_LOGIN:
+      return {
+        ...state,
+        loginStatus: ServerStatus.FETCHING,
+      }
+    case t.FETCH_ERROR_LOGIN:
+      return {
+        ...state,
+        loginStatus: ServerStatus.FETCH_ERROR,
+        loginServerMsg: action.payload
+      }
     default:
       return state
   }

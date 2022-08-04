@@ -1,1 +1,4 @@
 export const GET_TEST = "GET_TEST";
+export const FETCHING_LOGIN = "FETCHING_LOGIN";
+export const FETCH_LOGIN = "FETCH_LOGIN";
+export const FETCH_ERROR_LOGIN = "FETCH_ERROR_LOGIN";

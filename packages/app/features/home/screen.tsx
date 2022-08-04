@@ -24,14 +24,15 @@ const HomeScreen = ({ loginStatus, loginServerMsg, doLogin }: MainReducerState &
   // const sx = useSx();
   console.log("state", loginStatus, loginServerMsg);
 
-  React.useEffect(() => {
-    doLogin();
-  }, [loginStatus]);
-
   const submitForm = (formProps: FormProps) => {
+    console.log("entro aca ? ", formProps)
     doLogin(formProps);
-    push(`/dashboard`);
   }
+
+  React.useEffect(() => {
+    if (loginStatus === ServerStatus.FETCH) push(`/dashboard`);
+  }, [loginStatus]);
+  
   return (
     <View sx={{ flex: 1, justifyContent: 'center', alignItems: 'center', p: 16 }}>
       {loginStatus == ServerStatus.FETCHING && (

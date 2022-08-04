@@ -1,17 +1,28 @@
 import * as t from './types';
 import axios from 'axios';
+import { ServiceLoginApi } from 'app/services/services';
+import { FormProps } from '../../components/LoginForm'
+const LoginApi = new ServiceLoginApi();
 
 export type MainReduxActions = {
   doLogin: Function,
 }
 export enum ServerStatus { IDLE, FETCH, FETCHING, FETCH_ERROR };
 
-export const doLogin = (formData: FormData) => (dispatch: any) => {
-  // dispatch({ type: t.DO_LOGIN, payload: formData });
+export const doLogin = ({ email, password }: FormProps) => (dispatch: any) => {
+  const commonMessage = `There is a problem with the server`;
+  dispatch({ type: t.FETCHING_LOGIN });
+  LoginApi.doLogin(email, password).then((response: any) => {
+    console.log("response", response)
+    if (response.data) dispatch({ type: t.FETCH_LOGIN, payload: { email, password } });
+    else dispatch({ type: t.FETCH_ERROR_LOGIN, payload: response.message || commonMessage });
+  }).catch((response) => {
+    dispatch({ type: t.FETCH_ERROR_LOGIN, payload: response.message || commonMessage });
+  });
 }
 export const getTest = () => (dispatch: any) => {
   const config = {
-    headers:{
+    headers: {
       'X-CoinAPI-Key': process.env.NEXT_PUBLIC_API_URL,
     }
   };

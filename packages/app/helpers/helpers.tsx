@@ -7,5 +7,5 @@ export const validateEmail = (email: string) => {
 };
 
 export const validatePassword = (pass: string, max: number) => {
-  return (String(pass).length > max)
+  return (String(pass).length >= max)
 };
