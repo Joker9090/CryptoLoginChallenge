@@ -1,11 +1,13 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import HomeScreen from '../../features/home/screen'
-import { UserDetailScreen } from '../../features/user/detail-screen'
+import HomeScreen from '../../features/home/screen';
+import DashboardScreen from '../../features/dashboard/screen';
+import { CryptoDetailScreen } from '../../features/crypto/detail-screen'
 
 const Stack = createNativeStackNavigator<{
   home: undefined
-  'user-detail': {
+  "dashboard": undefined
+  'crypto-detail': {
     id: string
   }
 }>()
@@ -21,10 +23,17 @@ export function NativeNavigation() {
         }}
       />
       <Stack.Screen
-        name="user-detail"
-        component={UserDetailScreen}
+        name="dashboard"
+        component={DashboardScreen}
         options={{
-          title: 'User',
+          title: 'Dashboard',
+        }}
+      />
+      <Stack.Screen
+        name="crypto-detail"
+        component={CryptoDetailScreen}
+        options={{
+          title: 'CryptoDetail',
         }}
       />
     </Stack.Navigator>

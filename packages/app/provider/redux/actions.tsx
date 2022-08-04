@@ -2,9 +2,13 @@ import * as t from './types';
 import axios from 'axios';
 
 export type MainReduxActions = {
-  getTest: Function,
+  doLogin: Function,
 }
+export enum ServerStatus { IDLE, FETCH, FETCHING, FETCH_ERROR };
 
+export const doLogin = (formData: FormData) => (dispatch: any) => {
+  // dispatch({ type: t.DO_LOGIN, payload: formData });
+}
 export const getTest = () => (dispatch: any) => {
   const config = {
     headers:{

@@ -50,16 +50,34 @@ The env files need to be one for each app ( NEXT and EXPO ).
 Put the  .enf files inside apps/next and apps/expo folders
 
 ## TO IMPROVE
+- lOGIN, validations
+- list of crypto,
+- detail crypto list
+- chart 
+- ui blem 
 
+
+## Questions 
+- [Q] How to perform cross-platform data fetching? (Taking into account server-side (web app/nextjs) and client-side (mobile app) rendering)
+- [A] IDK if we can use server side rendering in React-native, but for react(app/nextjs) we can use getStaticProps and getServerSideProps. Good for SEO :)
+
+- [Q]How should we login in a cross-platform app? (Let's assume it's done with Firebase, how would it be implemented to be cross-platform) 
+- [A]For this, we can make a Service(singleton) integration consuming an API to singup/login/logout methods.
+Obviusly its neccessary to storage accessToken and refreshToken in the app. Here we need to make differents storage Repositories for React-native / React apps. 
+ReactNative > AsyncStorage > Service > ReduxActionCall
+React(next) > LocalStorage > Service > ReduxActionCall
+
+- [Q]How would you implement a cross-platform http client? (That is, it worked both server-side and client-side)
+- [A]Doing a good Service!! we can separate funcionalities to gain some versatility
 
 ## Coments 
 - I spent some time reading documentation and viewing some videos about solito and extra deps. using this monorepo more like react-native needs is kindy tricky. I have more experience working with scss or css vainilla, and now the components has an styledObject like scheme.
 - At First I think about the global state for both worlds
-- I figure out that this implementation is closest to flutter. Doing this in flutter may have better performance in mobile but less stylish power in web
+- I figure out that this implementation is closest to flutter. Doing this in flutter maybe have better performance in mobile but less stylish power in web
 is like React-native is 60-40 WEB-MOBILE vs Flutter 30-70 WEB-MOBILE
 
 ## Learn More
-- Time-Spent = 2 hours
+- Time-Spent = 5 hours
 - Time-Spent-pretends = 12 hours
 
 
