@@ -59,6 +59,7 @@ Please for this DEMO use `email@email.com | cosmefulanito`
 - chart 
 - ui blem
 
+
 ## Questions 
 - [Q] How to perform cross-platform data fetching? (Taking into account server-side (web app/nextjs) and client-side (mobile app) rendering)
 - [A] IDK if we can use server side rendering in React-native, but for react(app/nextjs) we can use getStaticProps and getServerSideProps. Good for SEO :)
