@@ -3,7 +3,7 @@ import React from 'react';
 import { View, H1, P, Row, TextInput } from 'dripsy'
 import { MotiView, useAnimationState } from 'moti';
 import { LoginFormStyle } from 'app/styles/LoginFormStyles';
-import { validateEmail, validatePassword } from 'app/helpers/helpers';
+import { validateEmail, validatePassword } from 'app/config/helpers';
 import { FadingObject } from './FadingObject';
 
 export type LoginFormProps = {

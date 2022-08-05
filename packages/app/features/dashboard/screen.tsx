@@ -35,9 +35,9 @@ function DashboardScreen({ getCryptos, cryptos, cryptosStatus, loginStatus }: Ma
   }, [])
 
   return (
-    <View sx={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View sx={{ flex: 1 }}>
       {cryptosStatus == ServerStatus.FETCHING && (<LoadingMask />)}
-      {cryptos.length && (<CryptoList onClick={clickOnCrypto} cryptos={cryptos} />)}
+      {(cryptos.length > 0) && (<CryptoList onClick={clickOnCrypto} cryptos={cryptos} />)}
     </View>
   )
 }

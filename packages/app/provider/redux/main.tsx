@@ -25,7 +25,6 @@ const INITIAL_STATE: MainReducerState = {
 }
 
 const mainReducer = (state = INITIAL_STATE, action) => {
-  console.log("=>", action.type, action.payload);
   switch (action.type) {
     case t.FETCH_LOGIN:
       return {

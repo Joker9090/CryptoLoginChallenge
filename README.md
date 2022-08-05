@@ -40,26 +40,29 @@ You can add other folders inside of `packages/` if you know what you're doing an
   - Runs `expo start`
 
 
-## Configure Env File
-Create a local .env file with the following variables
+## Configure config File
+there is a config file with de url of the apis configurated,
+if you want to use coinapi, please provide apiKey
 ```
-NEXT_PUBLIC_API_KEY=
-NEXT_PUBLIC_API_URL=
+const config = {
+  coinapi_API_KEY: "API_KEY",
+  coinapi_API_URL: "https://rest.coinapi.io/v1/exchanges",
+  coingecko_API_URL: "https://api.coingecko.com/api/v3/"
+}
+
 ```
-The env files need to be one for each app ( NEXT and EXPO ).
-Put the  .enf files inside apps/next and apps/expo folders
 
 ## User for test
 There is a few users generated, you can see the mocked data in package/app/sercices/services.tsx ApiLogin
 Please for this DEMO use `email@email.com | cosmefulanito`
 
 
+ 
 ## TO IMPROVE
-- mini Chart, Details Page
+- env file cross platform ( cant read env file in expo,)
 - animation in errors 
 - ui blem
 - better page transition
-
 
 ## Questions 
 - [Q] How to perform cross-platform data fetching? (Taking into account server-side (web app/nextjs) and client-side (mobile app) rendering)
@@ -89,8 +92,12 @@ is like React-native is 60-40 WEB-MOBILE vs Flutter 30-70 WEB-MOBILE
 - Try to implement solito + BLOCKLY 
 
 
+- I Was able to put a canvas in both apps, now we can have full control of canvas drawing to create a pritty graph there.
+
+- I Fight alot with Cryptos apis. rest.coinapi.io has a bad response with missing data, and api.coingecko.com doesnt work good in react-native. ( cors issue ), this is why there is more than one cryptoService implementation. but is easy to change
+
 ## Learn More
-- Time-Spent = 9 hours
+- Time-Spent = 14 hours
 - Time-Spent-pretends = 12 hours
 
 

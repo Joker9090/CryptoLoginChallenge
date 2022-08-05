@@ -1,6 +1,5 @@
 export const CryptoRowStyle = {
   holder: {
-    justifyContent: '',
     alignItems: 'center',
     borderRadius: 8,
     borderWidth: 2,
@@ -19,12 +18,12 @@ export const CryptoRowStyle = {
   },
   textId: {
     color: "white",
-    fontWeight: 600
+    fontWeight: '600'
   },
   textName: {
     color: "white",
     marginLeft: 2,
-    fontWeight: 400,
+    fontWeight: '400',
     flex: 1
   },
   textPrice: {
@@ -33,7 +32,7 @@ export const CryptoRowStyle = {
     marginBottom: 0,
     padding: 0,
     fontSize: 22,
-    fontWeight: 600,
+    fontWeight: '600',
     color: "green"
   }
 }

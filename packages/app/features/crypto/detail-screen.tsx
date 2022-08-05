@@ -7,6 +7,7 @@ import { getCrypto, MainReduxActions, ServerStatus } from 'app/provider/redux/ac
 import { LoadingMask } from 'app/components/LoadingMask';
 import { useRouter } from 'solito/router';
 import { MainReducerState } from 'app/provider/redux/main';
+import { CryptoDetail } from 'app/components/CryptoDetail';
 
 const { useParam } = createParam<{ id: string }>()
 
@@ -34,9 +35,9 @@ function CryptoDetailScreen({ getCrypto, crypto, cryptoStatus, loginStatus }: Ma
   }, [id])
 
   return (
-    <View sx={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View sx={{ flex: 1 }}>
       {cryptoStatus == ServerStatus.FETCHING && (<LoadingMask />)}
-      {crypto && (<CryptoRow cryptoData={crypto} onClick={console.log} />)}
+      {crypto && (<CryptoDetail cryptoData={crypto} />)}
     </View>
   )
 }

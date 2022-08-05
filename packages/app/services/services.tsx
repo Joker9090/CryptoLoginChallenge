@@ -1,6 +1,7 @@
 
 import { CryptoObject } from 'app/models/CryptoObject';
 import axios from 'axios';
+import config from 'app/config/config'
 
 export type ServiceCryptoApiConfig = {
   headers: any
@@ -30,7 +31,7 @@ export class ServiceCryptoApi {
   }
   GetCryptosPromise() {
     return new Promise((resolve, reject) => {
-      axios.get(`${process.env.NEXT_PUBLIC_API_URL}`, this.config)
+      axios.get(`${config.coinapi_API_URL}`, this.config)
         .then(res => {
           this.saveCryptosAsCache(res);
           resolve(res.data);
@@ -44,6 +45,11 @@ export class ServiceCryptoApi2 {
   config: ServiceCryptoApiConfig
   constructor() {
     this.cryptoList = [];
+    this.config = {
+      headers: {
+        "Content-Type": "application/json",
+      }
+    }
   }
   GetCryptoPromise(asset_id: String) {
     return new Promise((resolve, reject) => {
@@ -72,10 +78,11 @@ export class ServiceCryptoApi2 {
   }
 
   GetCryptosPromise() {
+
     return new Promise((resolve, reject) => {
-      axios.get(`${process.env.NEXT_PUBLIC_API_URL2}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true`)
+      axios.get(`${config.coingecko_API_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true`, this.config)
         .then((res) => {
-          return res.data.map(this.parseIndividual)
+          return res.data.map(this.parseIndividual).sort((a, b) => (parseFloat(b.price_usd) - parseFloat(a.price_usd))).filter((i, index) => (index < 10))
         }).then(res => {
           this.saveCryptosAsCache(res);
           resolve(res);

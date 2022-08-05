@@ -2,6 +2,7 @@ import * as t from './types';
 import { ServiceCryptoApi, ServiceCryptoApi2, ServiceLoginApi } from 'app/services/services';
 import { FormProps } from '../../components/LoginForm'
 import { CryptoObject } from 'app/models/CryptoObject';
+import config from '../../config/config';
 
 const LoginApi = new ServiceLoginApi(); // SINGLETON
 // const CryptoApi = new ServiceCryptoApi(); // SINGLETON // OLD
@@ -29,7 +30,7 @@ export const doLogin = ({ email, password }: FormProps) => (dispatch: any) => {
 export const getCryptos = () => (dispatch: any) => {
   dispatch({ type: t.FETCHING_CRYPTOS });
   const commonMessage = `There is a problem with the server`;
-  CryptoApi.SetToken(`${process.env.NEXT_PUBLIC_API_KEY}`);
+  CryptoApi.SetToken(`${config.coinapi_API_KEY}`);
   CryptoApi.GetCryptosPromise().then((response: CryptoObject[]) => {
     dispatch({ type: t.FETCH_CRYPTOS, payload: response });
   }).catch((response) => {
