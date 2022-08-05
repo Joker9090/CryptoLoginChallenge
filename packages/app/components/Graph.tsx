@@ -15,7 +15,7 @@ export const Graph = ({ data }: { data: CryptoObject }) => {
     }, 1000)
   }, [])
 
-  const _onGLContextCreate = (gl) => {
+  const _onGLContextCreate = (gl: any) => {
     const o = {
       maxGradStops: 2,
       renderWithOffscreenBuffer: true,
