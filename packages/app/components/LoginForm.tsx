@@ -1,12 +1,10 @@
 
 import React from 'react';
-import { Text, useSx, View, H1, P, Row, A, TextInput } from 'dripsy'
-import { TextLink } from 'solito/link'
-import { MotiLink } from 'solito/moti'
-import Ionicons from '@expo/vector-icons/Ionicons';
+import { View, H1, P, Row, TextInput } from 'dripsy'
 import { MotiView, useAnimationState } from 'moti';
 import { LoginFormStyle } from 'app/styles/LoginFormStyles';
 import { validateEmail, validatePassword } from 'app/helpers/helpers';
+import { FadingObject } from './FadingObject';
 
 export type LoginFormProps = {
   onSubmit: Function,
@@ -28,12 +26,8 @@ export const LoginForm = ({ onSubmit, serverMsg }: LoginFormProps) => {
   const [form, setForm] = React.useState<FormProps>({ email: "", password: "" });
 
   const scaleIn = useAnimationState({
-    from: {
-      scale: 1,
-    },
-    open: {
-      scale: 0.88,
-    },
+    from: { scale: 1, },
+    open: { scale: 0.88, },
   })
 
   React.useEffect(() => {
@@ -52,39 +46,49 @@ export const LoginForm = ({ onSubmit, serverMsg }: LoginFormProps) => {
 
   const isValid = !(Object.entries(validation).map(i => i[1]).filter(i => (i === true)).length);
   const clickBtn = () => {
-    console.log("y aca?")
     setIsActive(true);
     onSubmit(form);
   }
   const { holder, title, label, inputHolder, input, buttonHolder, buttonText, button, errorText, buttonDisabled } = LoginFormStyle;
   return (
     <Row sx={{ alignSelf: 'stretch' }}>
-       {/* @ts-ignore */}
+      {/* @ts-ignore */}
       <View sx={holder}>
-        <H1 sx={title}>Welcome!</H1>
-        <P sx={label}>Email</P>
-        {/* @ts-ignore */}
-        <View sx={inputHolder}>
-          <TextInput onChangeText={changeEmail} sx={input} />
-          {validation.email && form.email != "" && (<P sx={errorText}>{'Please enter a valid email'}</P>)}
-        </View>
-
-        <P sx={label}>Password</P>
-        {/* @ts-ignore */}
-        <View sx={inputHolder}>
-          <TextInput secureTextEntry={true} onChangeText={changePassword} sx={input} />
-          {validation.password && form.password != "" && (<P sx={errorText}>{'Please enter password with more than 8 characters'}</P>)}
-        </View>
+        <FadingObject>
+          <H1 sx={title}>Welcome!</H1>
+        </FadingObject>
+        <FadingObject delay={400}>
+          <P sx={label}>Email</P>
+        </FadingObject>
+        <FadingObject delay={400}>
+          {/* @ts-ignore */}
+          <View sx={inputHolder}>
+            <TextInput onChangeText={changeEmail} sx={input} />
+            {validation.email && form.email != "" && (<P sx={errorText}>{'Please enter a valid email'}</P>)}
+          </View>
+        </FadingObject>
+        <FadingObject delay={600}>
+          <P sx={label}>Password</P>
+        </FadingObject>
+        <FadingObject delay={600}>
+          {/* @ts-ignore */}
+          <View sx={inputHolder}>
+            <TextInput secureTextEntry={true} onChangeText={changePassword} sx={input} />
+            {validation.password && form.password != "" && (<P sx={errorText}>{'Please enter password with more than 8 characters'}</P>)}
+          </View>
+        </FadingObject>
         {(serverMsg) && (
           <P sx={errorText}>{serverMsg}</P>
         )}
-        <View sx={buttonHolder} >
-          <MotiView state={scaleIn} transition={{ type: 'timing', }} >
-            <View sx={(isValid) ? button : buttonDisabled} onTouchStart={() => isValid ? clickBtn() : () => { }}  onClick={() => isValid ? clickBtn() : () => { }} onTouchEnd={() => setIsActive(false)} >
-              <P sx={buttonText}>Login</P>
-            </View>
-          </MotiView>
-        </View>
+        <FadingObject delay={800}>
+          <View sx={buttonHolder} >
+            <MotiView state={scaleIn} transition={{ type: 'timing', }} >
+              <View sx={(isValid) ? button : buttonDisabled} onTouchStart={() => isValid ? clickBtn() : () => { }} onClick={() => isValid ? clickBtn() : () => { }} onTouchEnd={() => setIsActive(false)} >
+                <P sx={buttonText}>Login</P>
+              </View>
+            </MotiView>
+          </View>
+        </FadingObject>
 
       </View>
     </Row>

@@ -53,11 +53,12 @@ Put the  .enf files inside apps/next and apps/expo folders
 There is a few users generated, you can see the mocked data in package/app/sercices/services.tsx ApiLogin
 Please for this DEMO use `email@email.com | cosmefulanito`
 
+
 ## TO IMPROVE
-- list of crypto,
-- detail crypto list
-- chart 
+- mini Chart, Details Page
+- animation in errors 
 - ui blem
+- better page transition
 
 
 ## Questions 
@@ -78,12 +79,18 @@ Solito has the *.web.tsx file extension feature to separate the code to build fo
 
 ## Coments 
 - I spent some time reading documentation and viewing some videos about solito and extra deps. using this monorepo more like react-native needs is kindy tricky. I have more experience working with scss or css vainilla, and now the components has an styledObject like scheme.
-- At First I think about the global state for both worlds
+- I need to master more tool for react-native to do a better implementation fo some things than I often use in HTML/CSS
+- CRYPTO API, To Get all cryptos I manage to call data from api call, but this API only has 100 request limit. The response is saved in the singleton(Service) for the oiptimization to get only one crypto details. ( view the service : )) 
 - I figure out that this implementation is closest to flutter. Doing this in flutter maybe have better performance in mobile but less stylish power in web
 is like React-native is 60-40 WEB-MOBILE vs Flutter 30-70 WEB-MOBILE
+- I'm using bad "dripsy" stylish theming, I fallback to styled component for now. But need to learn more about it.
+
+- Try to implement solito + PHASER 
+- Try to implement solito + BLOCKLY 
+
 
 ## Learn More
-- Time-Spent = 5 hours
+- Time-Spent = 9 hours
 - Time-Spent-pretends = 12 hours
 
 

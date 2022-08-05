@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, } from 'dripsy'
+import { View } from 'dripsy'
 import { connect } from 'react-redux';
 import { doLogin, MainReduxActions, ServerStatus } from '../../provider/redux/actions';
 import { MainReducerState } from 'app/provider/redux/main';
@@ -21,13 +21,8 @@ const mapDispatchToProps = {
 
 const HomeScreen = ({ loginStatus, loginServerMsg, doLogin }: MainReducerState & MainReduxActions) => {
   const { push } = useRouter();
-  // const sx = useSx();
-  console.log("state", loginStatus, loginServerMsg);
 
-  const submitForm = (formProps: FormProps) => {
-    console.log("entro aca ? ", formProps)
-    doLogin(formProps);
-  }
+  const submitForm = (formProps: FormProps) => doLogin(formProps);
 
   React.useEffect(() => {
     if (loginStatus === ServerStatus.FETCH) push(`/dashboard`);
@@ -35,9 +30,7 @@ const HomeScreen = ({ loginStatus, loginServerMsg, doLogin }: MainReducerState &
   
   return (
     <View sx={{ flex: 1, justifyContent: 'center', alignItems: 'center', p: 16 }}>
-      {loginStatus == ServerStatus.FETCHING && (
-        <LoadingMask />
-      )}
+      {loginStatus == ServerStatus.FETCHING && (<LoadingMask />)}
       <LoginForm onSubmit={submitForm} serverMsg={loginServerMsg} />
     </View >
   )

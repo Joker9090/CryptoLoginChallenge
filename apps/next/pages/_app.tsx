@@ -5,6 +5,7 @@ import type { SolitoAppProps } from 'solito'
 import 'raf/polyfill'
 
 function MyApp({ Component, pageProps }: SolitoAppProps) {
+ 
   return (
     <>
       <Head>

@@ -2,7 +2,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 import HomeScreen from '../../features/home/screen';
 import DashboardScreen from '../../features/dashboard/screen';
-import { CryptoDetailScreen } from '../../features/crypto/detail-screen'
+import CryptoDetailScreen from '../../features/crypto/detail-screen'
 
 const Stack = createNativeStackNavigator<{
   home: undefined

@@ -1,14 +1,45 @@
-import { View, Text } from 'dripsy'
-import { createParam } from 'solito'
-import { TextLink } from 'solito/link'
+import { View } from 'dripsy'
+import { CryptoList } from 'app/components/CryptoList';
+import { CryptoObject } from 'app/models/CryptoObject';
+import { useRouter } from 'solito/router';
+import { connect } from 'react-redux';
+import { getCryptos, MainReduxActions, ServerStatus } from 'app/provider/redux/actions';
+import React from 'react';
+import { MainReducerState } from 'app/provider/redux/main';
+import { LoadingMask } from 'app/components/LoadingMask';
 
-function DashboardScreen() {
+const mapStateToProps = (state) => {
+  const { main } = state
+  return {
+    cryptosStatus: main.cryptosStatus,
+    cryptos: main.cryptos,
+    loginStatus: main.loginStatus
+  }
+};
+
+const mapDispatchToProps = {
+  getCryptos
+}
+
+function DashboardScreen({ getCryptos, cryptos, cryptosStatus, loginStatus }: MainReducerState & MainReduxActions) {
+  const { push } = useRouter();
+
+  const clickOnCrypto = (crypto: CryptoObject) => {
+    push(`/crypto/${crypto.asset_id}`);
+  }
+
+  React.useEffect(() => {
+    /* LOGGED CHECK */
+    if (loginStatus !== ServerStatus.FETCH) push(`/`);
+    else getCryptos();
+  }, [])
+
   return (
     <View sx={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <TextLink href="/">👈 Go Home</TextLink>
-      <TextLink href="/crypto/12">👈 Go cryptodetail</TextLink>
+      {cryptosStatus == ServerStatus.FETCHING && (<LoadingMask />)}
+      {cryptos.length && (<CryptoList onClick={clickOnCrypto} cryptos={cryptos} />)}
     </View>
   )
 }
 
-export default DashboardScreen;
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardScreen);

@@ -1,13 +1,16 @@
+import React from 'react';
 import { Dripsy } from './dripsy'
 import { NavigationProvider } from './navigation'
-import { ReduxProvider } from "./redux/index";
+import ReduxProvider from "./redux/index";
 
 export function Provider({ children }: { children: React.ReactNode }) {
   return (
     <NavigationProvider>
-      <ReduxProvider>
-        <Dripsy>{children}</Dripsy>
-      </ReduxProvider>
+      <Dripsy>
+        <ReduxProvider>
+          {children}
+        </ReduxProvider>
+      </Dripsy>
     </NavigationProvider>
   )
 }
