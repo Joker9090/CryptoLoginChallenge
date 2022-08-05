@@ -28,7 +28,7 @@ export const Graph = ({ data }: { data: CryptoObject }) => {
 
 }
 
-function drawCanvas(ctx) {
+function drawCanvas(ctx: any) {
   ctx.globalAlpha = 1.0;
   ctx.fillStyle = 'green';
   ctx.fillRect(0, 130, 50, 50);
@@ -37,7 +37,7 @@ function drawCanvas(ctx) {
   drawPieSlice(ctx, 0, 0, 150, Math.PI / 2, Math.PI / 2 + Math.PI / 3, "#F00", "#000");
 }
 
-function drawLine(ctx, startX, startY, endX, endY, color) {
+function drawLine(ctx: any, startX: any, startY: any, endX: any, endY: any, color: any) {
   ctx.save();
   ctx.strokeStyle = color;
   ctx.beginPath();
@@ -47,7 +47,7 @@ function drawLine(ctx, startX, startY, endX, endY, color) {
   ctx.restore();
 }
 
-function drawArc(ctx, centerX, centerY, radius, startAngle, endAngle, color) {
+function drawArc(ctx: any, centerX: any, centerY: any, radius: any, startAngle: any, endAngle: any, color: any) {
   ctx.save();
   ctx.strokeStyle = color;
   ctx.beginPath();
@@ -56,7 +56,7 @@ function drawArc(ctx, centerX, centerY, radius, startAngle, endAngle, color) {
   ctx.restore();
 }
 
-function drawPieSlice(ctx, centerX, centerY, radius, startAngle, endAngle, fillColor, strokeColor) {
+function drawPieSlice(ctx: any, centerX: any, centerY: any, radius: any, startAngle: any, endAngle: any, fillColor: any, strokeColor: any) {
   ctx.save();
   ctx.fillStyle = fillColor;
   ctx.strokeStyle = strokeColor;
