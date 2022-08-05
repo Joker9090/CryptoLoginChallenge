@@ -34,12 +34,12 @@ export const LoginForm = ({ onSubmit, serverMsg }: LoginFormProps) => {
     scaleIn.transitionTo(isActive ? 'open' : 'from');
   }, [isActive]);
 
-  const changeEmail = (value) => {
+  const changeEmail = (value: string) => {
     setValidation({ ...validation, email: !validateEmail(value) });
     setForm({ ...form, email: value });
   }
 
-  const changePassword = (value) => {
+  const changePassword = (value: string) => {
     setValidation({ ...validation, password: !validatePassword(value, 8) });
     setForm({ ...form, password: value, })
   }
